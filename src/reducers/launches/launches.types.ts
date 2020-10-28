@@ -1,6 +1,6 @@
 import { Action } from "redux";
 import { IPaginationAttributes } from "../../components/shared/Pagination/pagination.types";
-import { ISpaceXObject } from "../../global.types";
+import { ISpaceXObject, TSpaceXObjectType } from "../../global.types";
 
 
 export interface IData extends IPaginationAttributes{
@@ -8,7 +8,10 @@ export interface IData extends IPaginationAttributes{
 }
 
 export interface ISearchAction extends Action<"SEARCH"> {
+    objectType: TSpaceXObjectType
     offset: number;
+    additionalQuery?: any
+    additionalOptions?: any
 }
 
 export interface ISearchFulfilledAction extends Action<"SEARCH_FULFILLED"> {

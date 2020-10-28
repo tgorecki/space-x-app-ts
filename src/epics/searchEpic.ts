@@ -6,16 +6,16 @@ import * as SpaceXService from '../services/SpaceXService'
 import { ISearchAction } from "../reducers/launches/launches.types";
 
 
-
 export const searchEpic = (action$: any) =>
     action$.pipe(
         ofType("SEARCH"),
         switchMap((action: ISearchAction) =>
-            from(SpaceXService.getLaunches(action.offset)).pipe(
-                map((response) => searchFulfilled(response.data)),
-                catchError(error => {
-                    return of(searchRejected(error));
-                })
-            )
+            from(SpaceXService.getDataByQuery(action.objectType, action.offset, action.additionalQuery, action.additionalOptions))
+                .pipe(
+                    map((response) => searchFulfilled(response.data)),
+                    catchError(error => {
+                        return of(searchRejected(error));
+                    })
+                )
         )
     );

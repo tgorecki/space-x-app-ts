@@ -23,15 +23,21 @@ const LaunchesList: FunctionComponent = () => {
     const { docs: launchesList, ...paginationAttributes } = data;
 
     React.useEffect(() => {
-        dispatch(search())
+        dispatch(search("launches", 0))
     }, [dispatch]);
+
+    React.useEffect(() => {
+        return () => {
+
+        }
+    },[]);
 
 
     const handlePageChange = (operation: PaginationOperations): void => {
         if (operation === PaginationOperations.nextPage) {
-            dispatch(search(paginationAttributes!.offset! + _elementsLimit__))
+            dispatch(search("launches", paginationAttributes!.offset! + _elementsLimit__,))
         } else if (operation === PaginationOperations.previousPage) {
-            dispatch(search(paginationAttributes!.offset! - _elementsLimit__))
+            dispatch(search("launches", paginationAttributes!.offset! - _elementsLimit__,))
         }
         return
     };

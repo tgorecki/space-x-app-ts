@@ -1,21 +1,26 @@
 import { spacexApi } from "./ClientInstance";
 import { _elementsLimit__ } from "../constants/constants";
-import { TSpaceXObjectType } from "../global.types";
+import { TOptions, TQueries, TSpaceXObjectType } from "../global.types";
+
+const prepareOptions = (offset: number, additionOptions?: TOptions) => {
+    const initialOptions: TOptions = {
+        "offset": offset,
+        "limit": _elementsLimit__,
+    };
+    return additionOptions ? { initialOptions, ...additionOptions } : initialOptions
+};
 
 //epic
-export const getLaunches = (
-    offset: number = 0
-) => {
-    return spacexApi.post("/launches/query", {
-        "options": {
-            "offset": offset,
-            "limit": _elementsLimit__,
-        }
-    });
+export const getDataByQuery = (objectType: TSpaceXObjectType, offset: number,
+                                           additionalQuery?: TQueries, additionalOptions?: TOptions) => {
+
+    const options = prepareOptions(offset, additionalOptions);
+    const query = additionalQuery ? additionalQuery : {};
+    return spacexApi.post(`/${objectType}/query`, { options, query });
 };
 
 
-export const getDataByObjectType = async (id: string, objectType: TSpaceXObjectType) => {
+export const getDataByObjectId = async (id: string, objectType: TSpaceXObjectType) => {
     return spacexApi.get(`/${objectType}/${id}`);
 };
 
