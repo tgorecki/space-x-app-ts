@@ -18,14 +18,12 @@ const reducer: Reducer<ILaunchListState, TSearchActions> = (
             return {
                 ...state,
                 fetching: true,
-                error: null
             };
         case "SEARCH_FULFILLED":
             return {
                 ...state,
                 fetching: false,
                 data: action.data,
-                error: null
             };
         case "SEARCH_REJECTED":
             return {

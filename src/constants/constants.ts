@@ -1,1 +1,1 @@
-export const _elementsLimit__ = 10;
+export const _elementsLimit__ = 50;

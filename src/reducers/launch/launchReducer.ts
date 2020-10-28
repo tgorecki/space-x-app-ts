@@ -13,14 +13,12 @@ const reducer = (state = INITIAL_STATE, action: TFetchLaunchActions) => {
             return {
                 ...state,
                 fetching: true,
-                error: null
             };
         case "FETCH_LAUNCH_FULFILLED":
             return {
                 ...state,
                 fetching: false,
                 data: action.data,
-                error: null
             };
         case "FETCH_LAUNCH_REJECTED":
             return {

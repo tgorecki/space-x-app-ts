@@ -3,7 +3,6 @@ import { RouteComponentProps } from "react-router-dom";
 import { useDispatch, useSelector } from "../../hooks/redux";
 import { ILaunchState } from "../../reducers/launch/launch.types";
 import { getLaunch } from "../../actions/launch";
-import { AppState } from "../../global.types";
 
 const Launch: FunctionComponent<RouteComponentProps<{ id: string }>> = (props) => {
     const dispatch = useDispatch();

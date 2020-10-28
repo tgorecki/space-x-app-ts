@@ -12,3 +12,20 @@ export interface AppState {
     launches: ILaunchListState
     launch: ILaunchState
 }
+
+export type TError = { message: string } | null
+
+export type TQueries = {
+    [key: string]: any
+}
+
+export type TOptions = {
+    select?: any
+    sort?: any
+    offset?: number
+    page?: number
+    limit?: number
+    pagination?: boolean
+    populate?: any
+
+}

@@ -2,7 +2,7 @@ import { applyMiddleware, compose, createStore, Store } from 'redux'
 import { createEpicMiddleware, combineEpics } from "redux-observable";
 
 import { rootReducer } from "../reducers"
-import { searchEpic } from "../epics/launchesEpic";
+import { searchEpic } from "../epics/searchEpic";
 import ReduxThunk from "redux-thunk"
 import { AppState } from "../global.types";
 
