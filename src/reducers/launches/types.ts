@@ -1,10 +1,11 @@
 import { Action } from "redux";
+import { IPaginationAttributes } from "../../components/shared/types";
 
-export interface IData {
-    docs?: Array<ILaunch>;
-    totalDocs?: number;
-    offset?: number;
+
+export interface IData extends IPaginationAttributes{
+    docs?: Array<ILaunch>
 }
+
 
 export interface ILaunch {
     id: string;

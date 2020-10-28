@@ -3,7 +3,9 @@ import { TAction, ILaunchListState } from "./types";
 
 const initialState: ILaunchListState = {
     fetching: false,
-    data: { totalDocs: 0 },
+    data: {
+        totalDocs: 0,
+    },
     error: null
 };
 

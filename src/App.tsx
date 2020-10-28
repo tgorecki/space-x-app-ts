@@ -4,11 +4,11 @@ import LaunchesList from "./components/LaunchesList/LaunchesList";
 
 function App() {
     return (
-        <>
+        <React.Fragment>
             <Switch>
                 <Route path="/" exact component={LaunchesList}/>
             </Switch>
-        </>
+        </React.Fragment>
     )
 }
 

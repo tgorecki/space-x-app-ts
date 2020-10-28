@@ -1,4 +1,4 @@
-export const search = (offset: number):any => ({
+export const search = (offset: number = 0):any => ({
   type: "SEARCH",
   offset
 });

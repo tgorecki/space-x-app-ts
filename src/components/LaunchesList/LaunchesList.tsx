@@ -1,12 +1,14 @@
-import React, { FunctionComponent, useState } from 'react';
+import React, { FunctionComponent } from 'react';
 import { useDispatch, useSelector } from "../../hooks/redux";
 import { ILaunchListState } from "../../reducers/launches/types";
 import { search } from "../../actions/launches";
 import LaunchItem from "./LaunchItem/LaunchItem";
+import { Pagination } from "../shared/Pagination/Pagination";
+import { PaginationOperations } from "../shared/types";
+import { _elementsLimit__ } from "../../constants/constants";
 
 
 const LaunchesList: FunctionComponent = () => {
-    const [offset, setOffset] = useState(0);
     const dispatch = useDispatch();
     const { data, fetching, error } = useSelector(
         ({ launches }: { launches: ILaunchListState }) => {
@@ -18,31 +20,40 @@ const LaunchesList: FunctionComponent = () => {
         }
     ) as ILaunchListState;
 
-    const handleOffsetChange = () => {
-        setOffset((c) => c + 1)
+    const { docs: launchesList, ...paginationAttributes } = data;
+
+    React.useEffect(() => {
+        dispatch(search())
+    }, [dispatch]);
+
+
+    const handlePageChange = (operation: PaginationOperations): void => {
+        if (operation === PaginationOperations.nextPage) {
+            dispatch(search(paginationAttributes!.offset! + _elementsLimit__))
+        } else if (operation === PaginationOperations.previousPage) {
+            dispatch(search(paginationAttributes!.offset! - _elementsLimit__))
+        }
+        return
+    };
+
+    const renderContent = () => {
+        if (fetching) {
+            return <div>Loading...</div>
+        } else if (error) {
+            return <div>{error.message}</div>;
+        } else if (data.docs) {
+            return data.docs.map(item => (
+                <LaunchItem key={item.id} launchData={item}/>
+            ));
+        }
     };
 
 
-    React.useEffect(() => {
-        dispatch(search(offset))
-    }, [dispatch, offset]);
-
-
-    let result = null;
-    let totalResults = 0;
-
-    if (fetching) {
-        result = <div>Loading...</div>
-    } else if (error) {
-        result = <div>{error.message}</div>;
-    } else if (data && data.docs) {
-        result = data.docs.map(item => (
-            <LaunchItem key={item.id} launchData={item}/>
-        ));
-    }
     return (
         <div>
-            {result}
+            {renderContent()}
+            <Pagination handlePageChange={handlePageChange}
+                        {...paginationAttributes}/>
         </div>
     );
 };

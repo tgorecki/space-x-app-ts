@@ -1,4 +1,5 @@
 import { spacexApi } from "./ClientInstance";
+import { _elementsLimit__ } from "../constants/constants";
 
 export const getLaunches = (
     offset: number = 0
@@ -6,7 +7,7 @@ export const getLaunches = (
     return spacexApi.post("/launches/query", {
         "options": {
             "offset": offset,
-            "limit": 2,
+            "limit": _elementsLimit__,
         }
     });
 };
