@@ -1,40 +1,35 @@
-import { Reducer } from "redux";
-import { TSearchActions, ILaunchListState, IData } from "./launches.types";
+import { ISpaceXObject } from "../../global.types";
+import { ILaunchState, TFetchLaunchActions } from "./launch.types";
 
-const initialState: ILaunchListState = {
+const INITIAL_STATE: ILaunchState = {
     fetching: false,
-    data: {
-        totalDocs: 0,
-    } as IData,
+    data: {} as ISpaceXObject,
     error: null
 };
 
-const reducer: Reducer<ILaunchListState, TSearchActions> = (
-    state = initialState,
-    action
-) => {
+const reducer = (state = INITIAL_STATE, action: TFetchLaunchActions) => {
     switch (action.type) {
-        case "SEARCH":
+        case "FETCH_LAUNCH":
             return {
                 ...state,
                 fetching: true,
                 error: null
             };
-        case "SEARCH_FULFILLED":
+        case "FETCH_LAUNCH_FULFILLED":
             return {
                 ...state,
                 fetching: false,
                 data: action.data,
                 error: null
             };
-        case "SEARCH_REJECTED":
+        case "FETCH_LAUNCH_REJECTED":
             return {
                 ...state,
                 fetching: false,
                 error: action.error
             };
         default:
-            return state;
+            return state
     }
 };
 

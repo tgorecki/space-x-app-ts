@@ -1,15 +1,10 @@
 import { Action } from "redux";
-import { IPaginationAttributes } from "../../components/shared/types";
+import { IPaginationAttributes } from "../../components/shared/Pagination/pagination.types";
+import { ISpaceXObject } from "../../global.types";
 
 
 export interface IData extends IPaginationAttributes{
-    docs?: Array<ILaunch>
-}
-
-
-export interface ILaunch {
-    id: string;
-    [key: string]: any
+    docs?: Array<ISpaceXObject>
 }
 
 export interface ISearchAction extends Action<"SEARCH"> {
@@ -24,7 +19,7 @@ export interface ISearchRejectedAction extends Action<"SEARCH_REJECTED"> {
     error: { message: string };
 }
 
-export type TAction = ISearchAction | ISearchFulfilledAction | ISearchRejectedAction;
+export type TSearchActions = ISearchAction | ISearchFulfilledAction | ISearchRejectedAction;
 
 export interface ILaunchListState {
     fetching: boolean;

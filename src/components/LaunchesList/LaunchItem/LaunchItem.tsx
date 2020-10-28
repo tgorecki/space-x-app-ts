@@ -1,14 +1,14 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { ILaunch } from "../../../reducers/launches/types";
+import { ISpaceXObject } from "../../../global.types";
 
 
-const LaunchItem = ({ launchData }: { launchData: ILaunch }) => {
+const LaunchItem = ({ launchData }: { launchData: ISpaceXObject }) => {
     return (
-        <div>
+        <NavLink to={`/launch/${launchData.id}`}>
             <p>{launchData.name}</p>
-        </div>
+        </NavLink>
     );
 };
 
-export default LaunchItem;
+export { LaunchItem };

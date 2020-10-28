@@ -1,5 +1,5 @@
 import React from "react";
-import { IPaginationAttributes, PaginationOperations } from "../types";
+import { IPaginationAttributes, PaginationOperations } from "./pagination.types";
 
 type IProps = {
     handlePageChange: (pageOperation: PaginationOperations) => void;

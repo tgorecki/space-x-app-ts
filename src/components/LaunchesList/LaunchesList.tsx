@@ -1,10 +1,10 @@
 import React, { FunctionComponent } from 'react';
 import { useDispatch, useSelector } from "../../hooks/redux";
-import { ILaunchListState } from "../../reducers/launches/types";
+import { ILaunchListState } from "../../reducers/launches/launches.types";
 import { search } from "../../actions/launches";
-import LaunchItem from "./LaunchItem/LaunchItem";
+import { LaunchItem } from "./LaunchItem/LaunchItem";
 import { Pagination } from "../shared/Pagination/Pagination";
-import { PaginationOperations } from "../shared/types";
+import { PaginationOperations } from "../shared/Pagination/pagination.types";
 import { _elementsLimit__ } from "../../constants/constants";
 
 
@@ -13,7 +13,7 @@ const LaunchesList: FunctionComponent = () => {
     const { data, fetching, error } = useSelector(
         ({ launches }: { launches: ILaunchListState }) => {
             return {
-                isLoading: launches.fetching,
+                fetching: launches.fetching,
                 data: launches.data,
                 error: launches.error
             };
@@ -58,4 +58,4 @@ const LaunchesList: FunctionComponent = () => {
     );
 };
 
-export default LaunchesList;
+export { LaunchesList };
