@@ -1,9 +1,9 @@
 import { from, of } from "rxjs";
 import { ofType } from "redux-observable";
 import { catchError, switchMap, map } from "rxjs/operators";
-import { searchFulfilled, searchRejected } from "../actions/launches";
+import { searchFulfilled, searchRejected } from "../actions/search";
 import * as SpaceXService from '../services/SpaceXService'
-import { ISearchAction } from "../reducers/launches/launches.types";
+import { ISearchAction } from "../reducers/search/search.types";
 
 
 export const searchEpic = (action$: any) =>

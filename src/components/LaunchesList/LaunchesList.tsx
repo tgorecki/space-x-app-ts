@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react';
 import { useDispatch, useSelector } from "../../hooks/redux";
-import { ILaunchListState } from "../../reducers/launches/launches.types";
-import { search } from "../../actions/launches";
+import { ILaunchListState } from "../../reducers/search/search.types";
+import { search } from "../../actions/search";
 import { LaunchItem } from "./LaunchItem/LaunchItem";
 import { Pagination } from "../shared/Pagination/Pagination";
 import { PaginationOperations } from "../shared/Pagination/pagination.types";

@@ -1,5 +1,5 @@
 import { Reducer } from "redux";
-import { TSearchActions, ILaunchListState, IData } from "./launches.types";
+import { TSearchActions, ILaunchListState, IData } from "./search.types";
 
 const initialState: ILaunchListState = {
     fetching: false,
