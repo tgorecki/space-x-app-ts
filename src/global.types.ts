@@ -1,4 +1,4 @@
-import { ILaunchListState } from "./reducers/launches/launches.types";
+import { ILaunchListState } from "./reducers/search/search.types";
 import { ILaunchState } from "./reducers/launch/launch.types";
 
 export type TSpaceXObjectType = 'launches' | 'cores' | 'capsules' | 'crew' | 'launchpads' | 'payloads' | 'rockets'

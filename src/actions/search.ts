@@ -3,7 +3,7 @@ import {
     ISearchAction,
     ISearchFulfilledAction,
     ISearchRejectedAction
-} from "../reducers/launches/launches.types";
+} from "../reducers/search/search.types";
 import { TOptions, TQueries, TSpaceXObjectType } from "../global.types";
 
 export const search = (objectType: TSpaceXObjectType, offset: number, additionalQuery?: TQueries, additionalOptions?: TOptions): ISearchAction => ({

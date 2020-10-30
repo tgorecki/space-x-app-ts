@@ -9,12 +9,16 @@ export const Pagination: React.FunctionComponent<IPaginationAttributes & IProps>
         const { hasNextPage, hasPrevPage } = props;
 
         let nextPage =
-            <button onClick={() => props.handlePageChange(PaginationOperations.nextPage)} disabled={!hasNextPage}>
+            <button className="btn btn-light" name="next-page"
+                    onClick={() => props.handlePageChange(PaginationOperations.nextPage)}
+                    disabled={!hasNextPage}>
                 Next page
             </button>;
 
         let previousPage =
-            <button onClick={() => props.handlePageChange(PaginationOperations.previousPage)} disabled={!hasPrevPage}>
+            <button className="btn btn-dark"
+                    name="previous-page" onClick={() => props.handlePageChange(PaginationOperations.previousPage)}
+                    disabled={!hasPrevPage}>
                 Previous page
             </button>;
 
