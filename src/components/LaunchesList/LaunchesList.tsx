@@ -1,5 +1,5 @@
-import React, { FunctionComponent } from 'react';
-import { useDispatch, useSelector } from "../../hooks/redux";
+import React, { FunctionComponent, useEffect } from 'react';
+import { useDispatch, useSelector } from "react-redux";
 import { ILaunchListState } from "../../reducers/search/search.types";
 import { search } from "../../actions/search";
 import { LaunchItem } from "./LaunchItem/LaunchItem";
@@ -22,11 +22,11 @@ const LaunchesList: FunctionComponent = () => {
 
     const { docs: launchesList, ...paginationAttributes } = data;
 
-    React.useEffect(() => {
+    useEffect(() => {
         dispatch(search("launches", 0))
     }, [dispatch]);
 
-    React.useEffect(() => {
+    useEffect(() => {
         return () => {
 
         }

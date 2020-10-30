@@ -1,32 +1,27 @@
-import configureStore from "redux-mock-store";
-import React from 'react'
+import configureMockStore from "redux-mock-store";
+import * as React from 'react'
 import { shallow } from "enzyme";
 import { results } from '../mocks/data';
-import * as ReactReduxHooks from "../../hooks/redux"
+import * as ReactReduxHooks from "react-redux"
 import { LaunchesList } from "../../components/LaunchesList/LaunchesList";
 import { LaunchItem } from "../../components/LaunchesList/LaunchItem/LaunchItem";
 import { Pagination } from "../../components/shared/Pagination/Pagination";
+import thunk from "redux-thunk";
+
+
+const middlewares = [];
+const mockStore = configureMockStore(middlewares);
 
 describe('<LaunchesList/>', () => {
     let wrapper;
-    let useEffect;
     let store;
 
-    const mockUseEffect = () => {
-        useEffect.mockImplementationOnce(f => f());
-    };
-
     beforeEach(() => {
-        store = configureStore()({
+        store = mockStore({
             data: results,
             fetching: false,
             error: null
         });
-
-
-        useEffect = jest.spyOn(React, "useEffect");
-
-        mockUseEffect();
 
         jest
             .spyOn(ReactReduxHooks, "useSelector")
@@ -35,6 +30,11 @@ describe('<LaunchesList/>', () => {
         jest
             .spyOn(ReactReduxHooks, "useDispatch")
             .mockImplementation(() => store.dispatch);
+
+        jest
+            .spyOn(React, "useEffect")
+            .mockImplementation(f => f());
+
 
         wrapper = shallow(<LaunchesList store={store}/>);
     });
