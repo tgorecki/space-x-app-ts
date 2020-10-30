@@ -8,6 +8,6 @@ export const getLaunch = (id: string) => async (dispatch: Dispatch<TFetchLaunchA
         const { data } = await spaceXApi.getDataByObjectId(id, "launches");
         dispatch({ type: "FETCH_LAUNCH_FULFILLED", data });
     } catch (error) {
-        dispatch({type: "FETCH_LAUNCH_REJECTED", error})
+        dispatch({ type: "FETCH_LAUNCH_REJECTED", error: { message: error.message } })
     }
 };
