@@ -10,7 +10,6 @@ const mockStore = configureMockStore(middlewares);
 
 describe('<Launch/>', () => {
     let wrapper;
-    let useEffect;
     let store;
     let props;
 
