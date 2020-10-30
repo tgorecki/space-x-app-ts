@@ -1,6 +1,6 @@
 import React, { FunctionComponent, useEffect, } from "react";
 import { RouteComponentProps } from "react-router-dom";
-import { useDispatch, useSelector } from "../../hooks/redux";
+import { useDispatch, useSelector } from "react-redux";
 import { ILaunchState } from "../../reducers/launch/launch.types";
 import { getLaunch } from "../../actions/launch";
 
@@ -36,4 +36,4 @@ const Launch: FunctionComponent<RouteComponentProps<{ id: string }>> = (props) =
     )
 };
 
-export default React.memo(Launch)
+export default Launch
